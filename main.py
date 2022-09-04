@@ -43,7 +43,7 @@ lista_corpo = []
 
 while True:
     # definir o framerate
-    relogio.tick(60)
+    relogio.tick(30)
 
     # Dar refresh
     tela.fill((255, 255, 255))
@@ -52,20 +52,20 @@ while True:
     mensagem = f"Pontos: {pontos}"
     txt_formatado = fonte.render(mensagem, True, (0, 0, 0))
 
-    for evento in pygame.event.get():    
-        # Movimentação
-        if pygame.key.get_pressed()[K_a]:
-            x_cobra -= 10
-        if pygame.key.get_pressed()[K_d]:
-            x_cobra += 10
-        if pygame.key.get_pressed()[K_w]:
-            y_cobra -= 10
-        if pygame.key.get_pressed()[K_s]:
-            y_cobra += 10
-
-        if evento.type == QUIT:
+    for event in pygame.event.get():
+        if event.type == QUIT:
             pygame.quit()
             exit()
+
+    # Movimentação
+    if pygame.key.get_pressed()[K_a]:
+        x_cobra -= 20
+    if pygame.key.get_pressed()[K_d]:
+        x_cobra += 20
+    if pygame.key.get_pressed()[K_w]:
+        y_cobra -= 20
+    if pygame.key.get_pressed()[K_s]:
+        y_cobra += 20
             
     # Elementos da tela
     cobra = pygame.draw.rect(tela, (0, 255, 0), (x_cobra, y_cobra, 20, 20))
