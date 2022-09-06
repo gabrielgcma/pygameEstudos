@@ -34,6 +34,8 @@ pontos = 0
 tela = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption("Jogo")
 relogio = pygame.time.Clock()
+lista_cobra = []
+comprimento_incial = 5
 
 def aumenta_cobra(lista_corpo):
     for par_ordenado in lista_corpo:
@@ -83,6 +85,9 @@ while True:
     lista_cabeca.append(y_cobra)
 
     lista_corpo.append(lista_cabeca)
+
+    if len(lista_corpo) > comprimento_incial:
+        del lista_corpo[0]
 
     aumenta_cobra(lista_corpo)
 
